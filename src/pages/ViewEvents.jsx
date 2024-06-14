@@ -1,4 +1,5 @@
 import { Container, VStack, Heading, Box, Text, Button, Flex } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const ViewEvents = ({ events, deleteEvent, editEvent }) => {
   return (
@@ -10,7 +11,9 @@ const ViewEvents = ({ events, deleteEvent, editEvent }) => {
         ) : (
           events.map((event) => (
             <Box key={event.id} p={5} shadow="md" borderWidth="1px" width="100%">
-              <Heading fontSize="xl">{event.title}</Heading>
+              <Heading fontSize="xl">
+                <Link to={`/event/${event.id}`}>{event.title}</Link>
+              </Heading>
               <Text mt={4}>{event.description}</Text>
               <Flex mt={4} justifyContent="space-between">
                 <Button colorScheme="blue" onClick={() => editEvent(event.id)}>Edit</Button>
